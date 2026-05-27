@@ -1,14 +1,18 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class PuzzleManager : MonoBehaviour
 {
     public int totalTasks = 5;
     public int completedTasks = 0;
 
-    public Text progressText;
-
+    public TMP_Text progressText;
     public DoorController door;
+
+    void Start()
+    {
+        UpdateUI();
+    }
 
     public void CompleteStep()
     {
@@ -17,12 +21,16 @@ public class PuzzleManager : MonoBehaviour
 
         if (completedTasks >= totalTasks)
         {
+            Debug.Log("All puzzles completed!");
             door.OpenDoor();
         }
     }
 
     void UpdateUI()
     {
-        progressText.text = "Puzzle Progress: " + completedTasks + " / " + totalTasks;
+        if (progressText != null)
+        {
+            progressText.text = "Puzzle Progress: " + completedTasks + " / " + totalTasks;
+        }
     }
 }
