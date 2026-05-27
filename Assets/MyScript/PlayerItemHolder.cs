@@ -52,7 +52,9 @@ public class PlayerItemHolder : MonoBehaviour
 
         item.transform.SetParent(holdPoint);
         item.transform.localPosition = Vector3.zero;
-        item.transform.localRotation = Quaternion.identity;
+
+        // IMPORTANT: keep clean carry rotation
+        item.transform.rotation = Quaternion.identity;
 
         Rigidbody rb = item.GetComponent<Rigidbody>();
         if (rb != null)
