@@ -2,10 +2,17 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    public Animator anim;
+    public bool isOpen = false;
 
     public void OpenDoor()
     {
-        anim.SetTrigger("Open");
+        if (isOpen) return;
+
+        isOpen = true;
+
+        // Rotate door open
+        transform.Rotate(0, 90, 0);
+
+        Debug.Log("Door Opened!");
     }
 }
