@@ -9,6 +9,8 @@ public class PuzzleManager : MonoBehaviour
     public TMP_Text progressText;
     public DoorController door;
 
+    private bool hasWon = false;
+
     void Start()
     {
         UpdateUI();
@@ -16,13 +18,38 @@ public class PuzzleManager : MonoBehaviour
 
     public void CompleteStep()
     {
+        // Prevent double-triggering win logic
+        if (hasWon) return;
+
         completedTasks++;
         UpdateUI();
 
         if (completedTasks >= totalTasks)
         {
-            Debug.Log("All puzzles completed!");
-            door.OpenDoor();
+            hasWon = true;
+
+            Debug.Log("Win!");
+
+            // 1. Open the door FIRST
+            if (door != null)
+            {
+                door.OpenDoor();
+            }
+            else
+            {
+                Debug.LogWarning("Door is not assigned in PuzzleManager!");
+            }
+
+            // 2. Show win UI AFTER
+            WinUIManager win = FindObjectOfType<WinUIManager>();
+            if (win != null)
+            {
+                win.ShowWinScreen();
+            }
+            else
+            {
+                Debug.LogWarning("WinUIManager not found in scene!");
+            }
         }
     }
 
