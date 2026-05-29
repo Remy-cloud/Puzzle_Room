@@ -31,6 +31,7 @@ Poly Haven (Free 3D assets & textures)
 https://polyhaven.com/
 Sketchfab (selected free models)
 https://sketchfab.com/
+
 🎮 Controls
 Movement
 WASD – Move player
@@ -41,10 +42,12 @@ Game Flow
 Click Play on start menu to begin
 Complete all puzzles to unlock the exit door
 Avoid running out of time (lose condition)
+
 🏁 Win Condition
 Complete all 5 puzzle tasks
 Unlock and open the exit door
 Reach escape state (win screen appears)
+
 💀 Lose Condition
 Timer reaches zero
 Game Over screen appears
